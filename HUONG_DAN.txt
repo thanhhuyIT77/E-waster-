@@ -1,0 +1,140 @@
+# Hệ thống E-Waste Management - Hướng dẫn sử dụng
+
+## 🎯 Tài khoản đăng nhập
+
+### 1. Admin (Quản trị viên)
+- **Email:** admin@gmail.com
+- **Password:** 123456
+- **Quyền:** Quản lý toàn hệ thống
+- **URL Dashboard:** `/admin/dashboard.php`
+- **Chức năng:**
+  - Xem thống kê tổng quan
+  - Quản lý người dùng và đối tác
+  - Gán đơn hàng cho shipper
+  - Quản lý điểm thu gom
+  - Xuất báo cáo
+
+### 2. Shipper (Đối tác thu gom)
+- **Email:** shipper@gmail.com
+- **Password:** 123456
+- **Quyền:** Thu gom rác thải
+- **URL Dashboard:** `/shipper/dashboard.php`
+- **Chức năng:**
+  - Xem đơn chờ nhận
+  - Nhận đơn hàng
+  - Cập nhật trạng thái (đang tới → đã thu → hoàn thành)
+  - Xem thống kê cá nhân
+
+### 3. User (Người dùng)
+- **Đăng ký mới:** `/register.php`
+- **Chức năng:**
+  - Tìm điểm thu gom
+  - Đặt lịch thu gom tại nhà
+  - Theo dõi thiết bị
+  - Đổi thưởng
+
+## 🚀 Cách sử dụng
+
+### 1. Khởi tạo database
+```bash
+# Import database
+mysql -u root -p --port=3307 < database.sql
+
+# Hoặc tạo tài khoản mới
+php setup_accounts.php
+```
+
+### 2. Đăng nhập
+
+#### Admin:
+1. Truy cập `http://localhost/Waster/login.php`
+2. Đăng nhập với: `admin@gmail.com` / `123456`
+3. Chuyển đến Admin Dashboard
+
+#### Shipper:
+1. Truy cập `http://localhost/Waster/login.php`
+2. Đăng nhập với: `shipper@gmail.com` / `123456`
+3. Chuyển đến Shipper Dashboard
+
+#### User:
+1. Truy cập `http://localhost/Waster/register.php`
+2. Đăng ký tài khoản mới
+3. Sử dụng các chức năng của người dùng
+
+## 📱 Giao diện theo Vai trò
+
+### User Interface:
+- **Trang chủ:** Hiển thị tính năng cho người dùng
+- **Bản đồ:** Tìm điểm thu gom bằng GPS
+- **Đặt lịch:** Đặt lịch thu gom tại nhà
+- **Theo dõi:** Xem timeline xử lý thiết bị
+- **Đổi thưởng:** Đổi coins lấy phần thưởng
+
+### Shipper Interface:
+- **Dashboard:** Thống kê đơn hàng
+- **Đơn chờ:** Xem đơn hàng chờ nhận
+- **Đơn của tôi:** Xem và xử lý đơn đã nhận
+- **Menu:** Đơn giản, tập trung vào thu gom
+
+### Admin Interface:
+- **Dashboard:** Thống kê tổng quan hệ thống
+- **Quản lý đơn hàng:** Xem, gán đơn
+- **Quản lý người dùng:** User, Shipper, Admin
+- **Biểu đồ:** Phân tích dữ liệu
+- **Báo cáo:** Xuất báo cáo
+
+## 🎨 Tính năng đặc biệt
+
+### 1. Menu động theo vai trò
+- Mỗi vai trò có menu riêng
+- Icon và màu sắc khác nhau
+- Chức năng phù hợp với quyền
+
+### 2. Dashboard tùy chỉnh
+- **Admin:** Biểu đồ, thống kê tổng thể
+- **Shipper:** Đơn chờ, đơn của tôi
+- **User:** Tính năng cơ bản
+
+### 3. Bảo mật
+- Phân quyền chi tiết
+- Redirect tự động theo role
+- Kiểm tra permission
+
+## 🔐 Phân quyền
+
+### User:
+✅ Xem bản đồ
+✅ Đặt lịch thu gom
+✅ Xem đơn của mình
+✅ Đổi thưởng
+❌ Quản lý hệ thống
+
+### Shipper:
+✅ Nhận đơn hàng
+✅ Cập nhật trạng thái
+✅ Xem đơn của mình
+❌ Gán đơn cho shipper khác
+❌ Xem thống kê tổng thể
+
+### Admin:
+✅ Toàn quyền
+✅ Quản lý user/shipper
+✅ Gán đơn hàng
+✅ Xem thống kê
+✅ Xuất báo cáo
+
+## 📝 Ghi chú
+
+- Port database: **3307** (đã cấu hình sẵn)
+- File cấu hình: `config/database.php`
+- Tất cả password đều là: **123456**
+- Website đã sẵn sàng để sử dụng!
+
+## 🎉 Hoàn thành
+
+Hệ thống đã có:
+- ✅ 3 vai trò riêng biệt
+- ✅ Menu và giao diện khác nhau cho mỗi role
+- ✅ Dashboard tùy chỉnh
+- ✅ Phân quyền chi tiết
+- ✅ Tài khoản test sẵn sàng
